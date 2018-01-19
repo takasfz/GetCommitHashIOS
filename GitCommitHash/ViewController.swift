@@ -16,6 +16,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         let info = Bundle.main.infoDictionary!
-        self.label.text = "\(info["CFBundleShortVersionString"]!)"
+        self.label.text = "\(info["CFBundleShortVersionString"]!)_\(info["CommitHash"]!)"
     }
 }

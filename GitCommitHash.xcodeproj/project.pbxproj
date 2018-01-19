@@ -71,6 +71,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CFC344532011DD580072F6B6 /* Build configuration list for PBXNativeTarget "GitCommitHash" */;
 			buildPhases = (
+				CFC344562011E0FD0072F6B6 /* ShellScript */,
 				CFC3443D2011DD580072F6B6 /* Sources */,
 				CFC3443E2011DD580072F6B6 /* Frameworks */,
 				CFC3443F2011DD580072F6B6 /* Resources */,
@@ -130,6 +131,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CFC344562011E0FD0072F6B6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "plistBuddy=\"/usr/libexec/PlistBuddy\"\ninfoPlistFile=\"${TEMP_DIR}/Preprocessed-Info.plist\"\n\ncommitHash=$(git rev-parse --short HEAD)\n$plistBuddy -c \"Set :CommitHash $commitHash\" $infoPlistFile\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CFC3443D2011DD580072F6B6 /* Sources */ = {
@@ -277,6 +294,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2W53PDR574;
 				INFOPLIST_FILE = GitCommitHash/Info.plist;
+				INFOPLIST_PREPROCESS = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.takasfz.GitCommitHash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -292,6 +310,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2W53PDR574;
 				INFOPLIST_FILE = GitCommitHash/Info.plist;
+				INFOPLIST_PREPROCESS = YES;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.takasfz.GitCommitHash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
